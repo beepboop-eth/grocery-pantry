@@ -1,0 +1,9 @@
+{
+  "name": "Pantry",
+  "short_name": "Pantry",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#101418",
+  "theme_color": "#101418",
+  "icons": [{ "src": "icon.png", "sizes": "512x512", "type": "image/png" }]
+}

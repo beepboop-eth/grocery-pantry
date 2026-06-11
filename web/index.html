@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#101418">
+  <title>Pantry</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <!-- Scan view -->
+    <section id="scan-view" class="view active">
+      <div id="camera-wrap">
+        <video id="video" autoplay playsinline muted></video>
+        <div id="reticle"></div>
+        <div id="flash"></div>
+        <button id="start-btn">Start scanning</button>
+        <p id="camera-error" hidden></p>
+      </div>
+      <div id="session-panel">
+        <div id="session-header">
+          <span id="session-count">This session</span>
+          <button id="manual-add-btn" title="Add item without barcode">+ no barcode</button>
+        </div>
+        <ul id="session-list"></ul>
+      </div>
+    </section>
+
+    <!-- Pantry view -->
+    <section id="pantry-view" class="view">
+      <div id="pantry-header">
+        <h1>In the pantry</h1>
+        <span id="pantry-count"></span>
+      </div>
+      <ul id="pantry-list"></ul>
+      <p id="pantry-empty" hidden>Nothing here yet — go scan some groceries.</p>
+    </section>
+  </main>
+
+  <nav id="tabs">
+    <button class="tab active" data-view="scan-view">Scan</button>
+    <button class="tab" data-view="pantry-view">Pantry</button>
+  </nav>
+
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

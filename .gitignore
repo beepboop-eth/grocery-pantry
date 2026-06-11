@@ -1,0 +1,6 @@
+.env
+node_modules/
+supabase/.temp/
+# generated at build/deploy time
+web/icon.png
+web/config.js

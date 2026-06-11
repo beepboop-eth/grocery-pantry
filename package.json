@@ -1,0 +1,9 @@
+{
+  "name": "grocery-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "icon": "node scripts/make-icon.mjs",
+    "deploy": "git push origin main"
+  }
+}
