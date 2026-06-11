@@ -31,7 +31,9 @@ repo secret at deploy time so it never lands in git.
 
 ## Daily use
 
-Tap the Pantry icon → Start scanning → point at barcodes. Re-scanning the same
+First launch asks for the pantry passphrase (checked server-side by RLS,
+remembered per device). Then: tap the Pantry icon → Start scanning → point at
+barcodes. Re-scanning the same
 product bumps quantity. `+ no barcode` for produce. Pantry tab to see stock and
 tick off items you've used up.
 

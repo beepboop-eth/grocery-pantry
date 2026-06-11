@@ -2,7 +2,25 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { BarcodeDetector } from "https://esm.sh/barcode-detector@3/ponyfill";
 
 const { url: SUPABASE_URL, anonKey: SUPABASE_ANON_KEY } = window.PANTRY_CONFIG;
-const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Light auth: RLS on the server checks this header against a passphrase
+// stored in the database. Asked once per device, kept in localStorage.
+let pantryKey = localStorage.getItem("pantryKey") ?? prompt("Pantry passphrase:") ?? "";
+localStorage.setItem("pantryKey", pantryKey);
+const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  global: { headers: { "x-pantry-key": pantryKey } },
+});
+
+db.rpc("pantry_key_valid").then(({ data }) => {
+  if (data !== true) {
+    localStorage.removeItem("pantryKey");
+    const retry = prompt("Wrong passphrase — try again:");
+    if (retry !== null) {
+      localStorage.setItem("pantryKey", retry);
+      location.reload();
+    }
+  }
+});
 
 const $ = (id) => document.getElementById(id);
 
